@@ -95,7 +95,7 @@ class WikivoyageParser() {
           ed += 1
         }
         if (stack == 0) {
-          val listingText = text.substring(st, ed)
+          val listingText = text.substring(st, ed - 2)
           // a listing block may have many lines, split them with \n
           // split each line by | to separate features
           // flatMap to build a 1-dim array
