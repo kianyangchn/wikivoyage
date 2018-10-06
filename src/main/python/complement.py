@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 # @Author: kianyangchn
-# @Date:   2018-10-06 14:47:52
+# @Date:   2018-10-06 16:31:20
 # @Last Modified by:   kianyangchn
-# @Last Modified time: 2018-10-06 16:42:29
+# @Last Modified time: 2018-10-06 21:15:00
 
-import nltk
-import string
 import sys
 import codecs
+import nltk
+import string
 import ujson
 
 stops = set(nltk.corpus.stopwords.words("english"))
@@ -37,5 +37,9 @@ if __name__ == '__main__':
     corpus = [clean_text(text) for text in corpus]
     print('write')
     with codecs.open(content_file, 'w', 'utf-8') as cf:
-        for text in corpus:
-            cf.write('%s\n' % text)
+        for i in range(len(infos)):
+            text = corpus[i]
+            content_len = str(len(infos[i]['content'].split(' ')))
+            infos[i]['text'] = text
+            infos[i]['content_len'] = content_len
+            cf.write('%s\n' % ujson.dumps(infos[i]))
