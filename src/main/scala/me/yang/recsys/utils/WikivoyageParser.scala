@@ -112,7 +112,7 @@ class WikivoyageParser() {
             }).toMap
           // only keep key-value pairs for target features
           val caredFeatures = targetFeatures.map(feature => {
-            if (features.contains(feature)) (feature, features(feature))
+            if (features.contains(feature)) (feature, features(feature).trim)
             else (feature, "")
           }).toMap
           // wrap listing features with pageId and pageTitle to Listing object and append to AllListings
